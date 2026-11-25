@@ -13,8 +13,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    python3 -m venv .venv
-                    venv/bin/python -m pip install -r requirements.txt
+                    python3 -m venv venv
+                    venv/bin/python -m pip install -r requirement.txt
                 '''
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     mkdir -p reports
 
-                    .venv/bin/python -m pytest \
+                    venv/bin/python -m pytest \
                     --junitxml=reports/junit.xml -v
                 '''
             }
